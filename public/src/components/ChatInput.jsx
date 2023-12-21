@@ -1,44 +1,38 @@
-// import React, { useState } from 'react';
-// import styled from 'styled-components';
-// import Picker from 'emoji-picker-react'
-// import { IoMdSend } from 'react-icons/io';
-// import { BsEmojiSmileFill } from "react-icons/bs";
 import React, { useState } from "react";
 import { BsEmojiSmileFill } from "react-icons/bs";
 import { IoMdSend } from "react-icons/io";
 import styled from "styled-components";
 import Picker from "emoji-picker-react";
-
-export default function ChatInput({handleSendMsg}) {
+export default function ChatInput({ handleSendMsg }) {
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [msg, setMsg] = useState("");
   const handleEmojiPIckerHideShow = () => {
     setShowEmojiPicker(!showEmojiPicker);
   };
   const handleEmojiCLick = (emoji) => {
-    console.log("emoji", emoji);
     let message = msg;
-    message += emoji.emoji;
+    console.log("k",msg)
+    message +=emoji.emoji;
+    console.log(message)
     setMsg(message);
   };
-
   const sendChat = (event) => {
     event.preventDefault();
     if (msg.length > 0) {
       handleSendMsg(msg);
       setMsg("");
+      setShowEmojiPicker(false)
     }
   };
-
   return (
     <Container>
       <div className="button-container">
         <div className="emoji">
           <BsEmojiSmileFill onClick={handleEmojiPIckerHideShow} />
-          {showEmojiPicker && <Picker onEmojiClick={handleEmojiCLick} />}
+          {showEmojiPicker && <Picker width={310} height={380}  onEmojiClick={handleEmojiCLick} />}
         </div>
       </div>
-      <form className='input-container'  onSubmit={(event) => sendChat(event)}>
+      <form className='input-container' onSubmit={(event) => sendChat(event)}>
         <input type="text" placeholder='Type your massage here' value={msg} onChange={(e) => setMsg(e.target.value)} />
         <button className='submit'>
           <IoMdSend />
@@ -55,7 +49,6 @@ align-items: center;
 background-color: #080420;
 padding: 0 2rem;
 padding-bottom:0.3rem;
-
 @media screen and (min-width: 720px) and (max-width: 1080px) {
   padding:0.1rem;
   gap:1rem;
@@ -72,10 +65,9 @@ padding-bottom:0.3rem;
         color: #ffff00c8;
         cursor: pointer;
         }
-
-        .EmojiPickerReact{
-          position: relative;
-           top:-490px;
+        .EmojiPickerReact{        
+          position:absolute;
+           top:-410px;
            background-color: #080420;
            box-shadow: 0 5px 10px #9a86f3;
            border-color: #9a86f3;
@@ -85,10 +77,12 @@ padding-bottom:0.3rem;
             &-thumb {
               background-color: #9a86f3;
             }
+            
           }
-           .emoji-search {
-            background-color: transparent;
-            border-color: #9a86f3;
+          .emoji-categories{
+            button{
+              filter:contrast(0);
+            }
           }
         }
         .emoji-search {
@@ -109,7 +103,6 @@ padding-bottom:0.3rem;
     background-color: #ffffff34;
     input{
         width: 90%;
-        // height: 60%;
         background-color: transparent;
         color: white;
         border: none;

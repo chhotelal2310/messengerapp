@@ -40,6 +40,7 @@ function Login() {
       }
       if (data.status === true) {
         localStorage.setItem("chat-app-user", JSON.stringify(data.user));
+        navigate('/')
       }
 
     }
@@ -68,7 +69,7 @@ function Login() {
         <form onSubmit={(event) => handleSubmit(event)}>
           <div className='brand'>
             <img src={Logo} alt="Logo" />
-            <h1>snappy</h1>
+            <h1>SPEEDY</h1>
           </div>
           <input type='text' placeholder='Username' name='username' onChange={(e) => handleChange(e)} min="3" />
           <input type='password' placeholder='Password' name='password' onChange={(e) => handleChange(e)} />

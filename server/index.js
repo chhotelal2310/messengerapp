@@ -30,7 +30,7 @@ mongoose.connect(process.env.MONGO_URL,{
 });
 
 const server=app.listen(process.env.PORT,()=>{
-    console.log(`Server Started on Port ${process.env.PORT}`);
+   console.log(`Server Started on Port ${process.env.PORT}`);
 });
 
 
@@ -50,7 +50,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("send-msg", (data) => {
-    console.log("sendmsg",{data});
+    //console.log("sendmsg",{data});
     const sendUserSocket = onlineUsers.get(data.to);
     if (sendUserSocket) {
       socket.to(sendUserSocket).emit("msg-recieve", data.message);

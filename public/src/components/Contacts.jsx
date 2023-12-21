@@ -8,7 +8,7 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
     const [currentSelected, setCurrentSelected] = useState(undefined);
 
     useEffect(() => {
-        console.log(contacts)
+        // console.log(contacts)
 
         if (currentUser) {
             setCurrentUserImage(currentUser.avatarImage);
@@ -29,7 +29,7 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
                     <Container>
                         <div className="brand">
                             <img src={Logo} alt="logo" />
-                            <h3>snappy</h3>
+                            <h3>SPEEDY</h3>
                         </div>
 
                         <div className="contacts">
@@ -160,7 +160,5 @@ background-color: #080420;
     }
 }   
 }
-
-
 `;
 

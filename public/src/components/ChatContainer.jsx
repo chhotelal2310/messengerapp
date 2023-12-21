@@ -14,14 +14,7 @@ export const ChatContainer = ({ currentChat, currentUser, socket }) => {
   const [arrivalMessage, setArrivalMessage] = useState(null);//ye new import kiya gaya hai
   const scrollRef = useRef();
 
-  // useEffect( async()=>{
-  //   const response = await axios.post(getAllMessagesRoute, {
-  //     from: currentUser._id,
-  //     to: currentChat._id,
-  //   });
-  //   setMessages(response.data);
-
-  // }, [currentChat]);
+  
 
   useEffect(() => {
     const fetchMessages = async () => {
@@ -56,23 +49,14 @@ export const ChatContainer = ({ currentChat, currentUser, socket }) => {
       from: currentUser._id,
       message: msg,
     });
+
+    
     const msgs = [...messages];
     msgs.push({ fromSelf: true, message: msg });
     setMessages(msgs);
 
 
-    // socket.current.emit("send-msg", {
-    //   to: currentChat._id,
-    //   from: currentUser._id,
-    //   message: msg,
-    // });
     
-    // // Assuming msg is a string containing the new message
-    // const newMessage = { fromSelf: true, message: msg };
-    // // Update the messages state by creating a new array with the old messages and the new message
-    // const updatedMessages = [...messages, newMessage];
-    // // Update the state with the new messages array
-    // setMessages(updatedMessages);
     
   };
 
@@ -120,7 +104,7 @@ export const ChatContainer = ({ currentChat, currentUser, socket }) => {
             {
               messages.map((message) => {
                 return (
-                  <div >
+                  <div ref={scrollRef} key={uuidv4()} >
                     <div className={`message ${message.fromSelf ? "sended" : "recieved"}`}>
                       <div className='content'>
                         <p>{message.message}</p>
