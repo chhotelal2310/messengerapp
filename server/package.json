@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
-    "build":"yarn i"
+    "build":"yarn add"
   },
   "author": "",
   "license": "ISC",
