@@ -17,21 +17,37 @@ app.use("/api/auth",userRoutes);
 //app.use("/api/messages",messagesRoute);
 app.use("/api/messages",messageRoute);
 
-mongoose.connect(process.env.MONGO_URL,{
-    useNewUrlParser:true,
-    useUnifiedTopology:true,
+// mongoose.connect(process.env.MONGO_URL,{
+//     useNewUrlParser:true,
+//     useUnifiedTopology:true,
+// })
+// .then(()=>{
+//     console.log("mongoDB connect Sucessfull");
+// })
+// .catch((err)=>{
+//     console.log(err.message);
+// });
+
+// const server=app.listen(process.env.PORT,()=>{
+//    console.log(`Server Started on Port ${process.env.PORT}`);
+// });
+
+
+//ye new add kiya gaya hai
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 })
-.then(()=>{
-    console.log("mongoDB connect Sucessfull");
+.then(() => {
+  console.log("MongoDB connected successfully");
 })
-.catch((err)=>{
-    console.log(err.message);
+.catch((err) => {
+  console.error("Error connecting to MongoDB:", err);
 });
 
 const server=app.listen(process.env.PORT,()=>{
    console.log(`Server Started on Port ${process.env.PORT}`);
 });
-
 
 //new hai ye wala iske niche ka 
 const io = socket(server, {
