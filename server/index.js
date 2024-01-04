@@ -4,6 +4,10 @@ const mongoose=require("mongoose");
 const userRoutes=require("./routes/userRoutes");
 const messageRoute=require("./routes/messagesRoute");
 
+//niche wala new lagaya hu
+const userrotes=require('./model/userModel');
+const messageroute=require('./model/messageModel');
+
 const app=express();
 
 //new hai iske nicke ka 
