@@ -8,7 +8,7 @@ module.exports.login = async (req, res, next) => {
   try {
     const { username, password } = req.body;
     const user = await User.findOne({ username });
-    console.log("user",user)
+    // console.log("user",user)
     if (!user)
       return res.json({ msg: "Incorrect username or Password", status: false });
     const isPasswordValid = await bcrypt.compare(password, user.password);
@@ -73,7 +73,7 @@ module.exports.getAllUsers=async (req,res,next)=>{
        "avatarImage",
       "_id",
     ]);
-    console.log(users)
+    // console.log(users)
     return res.json(users);
   } catch (ex) {
     next(ex);

@@ -19,8 +19,18 @@ require("dotenv").config();
 app.use(cors());
 app.use(express.json());
 
+
+
+
 app.use("/api/auth",userRoutes);
 app.use("/api/messages",messageRoute);
+
+
+
+
+// app.post('/path', (req, res) => {
+//   res.send("hello api work");
+// });
 
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
