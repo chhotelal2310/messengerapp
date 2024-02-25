@@ -2,10 +2,17 @@ const express=require("express");
 const cors=require("cors");
 const mongoose=require("mongoose");
 const userRoutes=require("./routes/userRoutes");
-//const messagesRoute=require("./routes/messagesRoute");
 const messageRoute=require("./routes/messagesRoute");
+//niche wala new lagaya hu
+
+
+const userrotes=require('./model/userModel');
+const messageroute=require('./model/messageModel');
+
 
 const app=express();
+
+
 
 //new hai iske nicke ka 
 const socket=require("socket.io");
@@ -15,18 +22,32 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth",userRoutes);
-//app.use("/api/messages",messagesRoute);
 app.use("/api/messages",messageRoute);
 
-mongoose.connect(process.env.MONGO_URL,{
-    useNewUrlParser:true,
-    useUnifiedTopology:true,
+
+// mongoose.connect(process.env.MONGO_URL,{
+//     useNewUrlParser:true,
+//     useUnifiedTopology:true,
+// })
+// .then(()=>{
+//     console.log("mongoDB connect Sucessfull");
+//     console.log(process.env.MONGO_URL);
+// })
+// .catch((err)=>{
+//     console.log(err.message);
+// });
+
+
+
+mongoose.connect(process.env.MONGO_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 })
-.then(()=>{
-    console.log("mongoDB connect Sucessfull");
+.then(() => {
+  console.log("MongoDB connected successfully");
 })
-.catch((err)=>{
-    console.log(err.message);
+.catch((err) => {
+  console.error("Error connecting to MongoDB:", err);
 });
 
 const server=app.listen(process.env.PORT,()=>{
