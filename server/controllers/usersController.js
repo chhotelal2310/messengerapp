@@ -54,6 +54,7 @@ module.exports.setAvatar=async(req,res,next)=>{
         isAvatarImageSet: true,
         avatarImage,
       });
+
      // { new: true }
     return res.json({
       isSet: userData.isAvatarImageSet,
@@ -73,6 +74,7 @@ module.exports.getAllUsers=async (req,res,next)=>{
        "avatarImage",
       "_id",
     ]);
+    
     // console.log(users)
     return res.json(users);
   } catch (ex) {
