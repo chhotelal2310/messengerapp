@@ -7,7 +7,8 @@ import { getAllMessagesRoute, sendMessageRoute } from '../utils/APIRoutes';
 import axios from 'axios';
 import {v4 as uuidv4} from 'uuid';
 
-//export niche wala me socke new laga hai
+/************** export below wala me socket  laga hai *******************/
+
 export const ChatContainer = ({ currentChat, currentUser, socket }) => {
 
   const [messages, setMessages] = useState([]);
@@ -25,7 +26,8 @@ export const ChatContainer = ({ currentChat, currentUser, socket }) => {
         });
         setMessages(response.data);
       } catch (error) {
-        // Handle any potential errors here
+
+        /*********Handle any potential errors here ********************/
         console.error("Error fetching messages:", error);
       }
     };
@@ -43,7 +45,7 @@ export const ChatContainer = ({ currentChat, currentUser, socket }) => {
       message: msg,
     });
 
-    //niche setmasses tak sab new hai 
+  
     socket.current.emit("send-msg", {
       to: currentChat._id,
       from: currentUser._id,
@@ -60,7 +62,7 @@ export const ChatContainer = ({ currentChat, currentUser, socket }) => {
     
   };
 
-  ///niche wala use effect new use kiya gya hai 
+
   useEffect(() => {
     if (socket.current) {
       socket.current.on("msg-recieve", (msg) => {
@@ -70,13 +72,12 @@ export const ChatContainer = ({ currentChat, currentUser, socket }) => {
   }, []);
 
 
-  //niche wala useeffect new use kiya gaya hai
   useEffect(() => {
     arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
   }, [arrivalMessage]);
 
 
-  //niche wala new hai
+
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behaviour: "smooth" });
   }, [messages]);

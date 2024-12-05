@@ -16,6 +16,7 @@ function Register() {
     password: "",
     confirmPassword: "",
   });
+
   const toastOptions = {
     position: "bottom-right",
     autoClose: 8000,
@@ -31,6 +32,7 @@ function Register() {
   }, [])
 
   const handleSubmit = async (event) => {
+    
     event.preventDefault();
     if (handleValidation()) {
       const { password, username, email } = values;
@@ -39,6 +41,7 @@ function Register() {
         email,
         password,
       });
+
       if (data.status === false) {
         toast.error(data.msg, toastOptions);
       }
